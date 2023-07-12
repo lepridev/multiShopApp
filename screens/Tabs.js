@@ -1,12 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "./HomeScreen";
-import SearchScreen from "./SearchScreen";
+import SearchScreen from "./ShopScreen";
 import { Image, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import ShopScreen from "./ShopScreen";
+import ShopScreen from "./SearchScreen";
 import ProfileScreen from "./ProfileScreen";
+import { clsx } from "clsx";
+import { CategoriesData, ShopData } from "../constant/data";
 
 const Tab = createBottomTabNavigator();
 
@@ -38,7 +40,13 @@ const Tabs = () => {
                 size={24}
                 color={focused ? "#941B80" : "black"}
               />
-              <Text className="text-[10px]">Accueil</Text>
+              <Text
+                className={clsx(
+                  `text-[10px] ${focused ? "text-[#941B80]" : "text-white"}`
+                )}
+              >
+                Accueil
+              </Text>
             </View>
           ),
         }}
@@ -46,6 +54,30 @@ const Tabs = () => {
       <Tab.Screen
         name="SearchScreen"
         component={SearchScreen}
+        initialParams={{ CategoriesData, ShopData }}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View className="items-center justify-center space-y-1">
+              <Entypo
+                name="shop"
+                size={24}
+                color={focused ? "#941B80" : "white"}
+              />
+              <Text
+                className={clsx(
+                  `text-[10px] ${focused ? "text-[#941B80]" : "text-white"}`
+                )}
+              >
+                Boutique
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="ShopScreen"
+        component={ShopScreen}
+        initialParams={{ CategoriesData, ShopData }}
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center justify-center space-y-1">
@@ -55,27 +87,18 @@ const Tabs = () => {
                 color={focused ? "#941B80" : "white"}
               />
 
-              <Text className="text-[10px]">Recherche</Text>
+              <Text
+                className={clsx(
+                  `text-[10px] ${focused ? "text-[#941B80]" : "text-white"}`
+                )}
+              >
+                Trouver
+              </Text>
             </View>
           ),
         }}
       />
-      <Tab.Screen
-        name="ShopScreen"
-        component={ShopScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View className="items-center justify-center space-y-1">
-              <Entypo
-                name="shop"
-                size={24}
-                color={focused ? "#941B80" : "white"}
-              />
-              <Text className="text-[10px]">Boutique</Text>
-            </View>
-          ),
-        }}
-      />
+
       <Tab.Screen
         name="ProfileScreen"
         component={ProfileScreen}
@@ -88,7 +111,13 @@ const Tabs = () => {
                 color={focused ? "#941B80" : "white"}
               />
 
-              <Text className="text-[10px]">Profile</Text>
+              <Text
+                className={clsx(
+                  `text-[10px] ${focused ? "text-[#941B80]" : "text-white"}`
+                )}
+              >
+                Profile
+              </Text>
             </View>
           ),
         }}
