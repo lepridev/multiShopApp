@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import "react-native-gesture-handler";
 import HomeScreen from "./HomeScreen";
 import SearchScreen from "./ShopScreen";
 import { Image, Text, View } from "react-native";
@@ -9,6 +10,8 @@ import ShopScreen from "./SearchScreen";
 import ProfileScreen from "./ProfileScreen";
 import { clsx } from "clsx";
 import { CategoriesData, ShopData } from "../constant/data";
+import TopTabsGroup from "./TopTapsGroup";
+import DrawerGroup from "./Drawer";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,6 +19,7 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
@@ -101,7 +105,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="ProfileScreen"
-        component={ProfileScreen}
+        component={DrawerGroup}
         options={{
           tabBarIcon: ({ focused }) => (
             <View className="items-center justify-center space-y-1">
