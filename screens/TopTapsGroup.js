@@ -18,9 +18,10 @@ function TopTabsGroup() {
         tabBarLabelStyle: {
           textTransform: "capitalize",
           fontWeight: "bold",
+          paddingTop: 22,
         },
         tabBarIndicatorStyle: {
-          height: 5,
+          height: 3,
           borderRadius: 5,
           backgroundColor: "#1DA1F2",
         },
@@ -30,7 +31,7 @@ function TopTabsGroup() {
         name="ProfileScreen"
         component={ProfileScreen}
         options={{
-          tabBarLabel: "Business",
+          tabBarLabel: "Service",
         }}
       />
       <TopTabs.Screen name="Services" component={Business1} />
